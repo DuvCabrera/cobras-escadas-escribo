@@ -1,4 +1,5 @@
-import 'package:cobras_escadas/components/dialogo_acabou_widget.dart';
+import 'package:cobras_escadas/components/dialogo_cobra_escada_widget.dart';
+import 'package:cobras_escadas/components/dialogo_fim_widget.dart';
 import 'package:cobras_escadas/components/dialogo_vitoria_widget.dart';
 import 'package:cobras_escadas/models/cobras_escadas.dart';
 import 'package:flutter/cupertino.dart';
@@ -110,13 +111,13 @@ class ControleWidget extends StatelessWidget {
                       campo.temCobra = false;
                       showDialog(
                           context: context,
-                          builder: (_) => const DialogoAcabouWidget(texto: 'Ops. Você pisou em uma Cobra, volte um pouco',),);
+                          builder: (_) => const DialogoCobraEscadaWidget(texto: 'Ops. Você pisou em uma Cobra, volte um pouco', titulo: 'Cuidado Cobra!',),);
                     }
                     if (campo.temEscada){
                       campo.temEscada = false;
                         showDialog(
                             context: context,
-                            builder: (_) => const DialogoAcabouWidget(texto: 'Opa! Encontrou uma escada, avance alguns passos',),);
+                            builder: (_) => const DialogoCobraEscadaWidget(texto: 'Opa! Encontrou uma escada, avance alguns passos', titulo: 'Uma escada!',),);
                     }
 
                     if (campo.jogoAcabou) {
@@ -132,7 +133,7 @@ class ControleWidget extends StatelessWidget {
                       } else if (acabouMesmo) {
                         showDialog(
                           context: context,
-                          builder: (_) => const DialogoAcabouWidget(texto: 'Jogo Acabou',),
+                          builder: (_) => DialogoFimWidget(onConfirmar: () => campo.reiniciar()),
                         );
                       }
                     }
